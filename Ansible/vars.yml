@@ -1,0 +1,6 @@
+---
+PACKAGES:
+  - vim
+  - htop
+  - tmux
+  - docker-ce

@@ -1,0 +1,22 @@
+---
+- hosts: all
+  become: true
+  vars_files:
+  - vars.yml
+  strategy: free
+
+  tasks:
+    - name: Add the docker signing key
+      apt_key: url=https://download.docker.com/linux/ubuntu/gpg state=present
+
+    - name: Add the docker apt repo
+      apt_repository: repo='deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable' state=present
+
+    - name: Install packages
+      apt: name={{ item }} state=present update_cache=true force=yes
+      with_items: "{{ PACKAGES }}"
+
+    - name: Add user vagrant to the docker group
+      user: name=vagrant
+            groups=docker
+            append=yes

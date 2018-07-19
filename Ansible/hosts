@@ -1,0 +1,12 @@
+[masters]
+swarm-master-1 ansible_host=192.168.77.10
+swarm-master-2 ansible_host=192.168.77.11
+
+[workers]
+swarm-worker-1 ansible_host=192.168.77.12
+swarm-worker-2 ansible_host=192.168.77.13
+
+[all:vars]
+ansible_connection=ssh 
+ansible_ssh_user=vagrant 
+ansible_ssh_pass=vagrant
