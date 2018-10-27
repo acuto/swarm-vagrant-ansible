@@ -13,10 +13,14 @@
       apt_repository: repo='deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable' state=present
 
     - name: Install packages
-      apt: name={{ item }} state=present update_cache=true force=yes
-      with_items: "{{ PACKAGES }}"
+      apt:
+        name: "{{ PACKAGES }}"
+        state: present
+        update_cache: true
+        force: yes
 
     - name: Add user vagrant to the docker group
-      user: name=vagrant
-            groups=docker
-            append=yes
+      user:
+        name: vagrant
+        groups: docker
+        append: yes
