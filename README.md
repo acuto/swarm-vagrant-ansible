@@ -16,7 +16,7 @@ Once the nodes are provisioned, we will use **Ansible** for their configuration,
 
 ## Code Overview
 
-Through the Vagrant script (_Vagrantfile_) we provision four identical Linux machines (Ubuntu 16.04 LTS) on the same subnet:
+Through the Vagrant script (_Vagrantfile_) we provision four identical Linux machines (Ubuntu 20.04 LTS) on the same subnet:
 
 ```ruby
 nodes = [
@@ -34,7 +34,7 @@ Vagrant.configure("2") do |config|
   # Provision nodes
   nodes.each do |node|
     config.vm.define node[:hostname] do |nodeconfig|
-      nodeconfig.vm.box = "bento/ubuntu-16.04";
+      nodeconfig.vm.box = "bento/ubuntu-20.04";
       nodeconfig.vm.hostname = node[:hostname] + ".box"
       nodeconfig.vm.network :private_network, ip: node[:ip]
       memory = node[:ram] ? node[:ram] : 1024;
@@ -160,10 +160,10 @@ The last playbook, _join.yaml_, sets up the actual Docker Swarm as composed of f
 
 ## Step 1: Pull the Vagrant Box
 
-We use Bento's Ubuntu 16.04 Vagrant Box - https://app.vagrantup.com/bento/boxes/ubuntu-16.04 - as the image template for all hosts. Enter a shell and type:
+We use Bento's Ubuntu 20.04 Vagrant Box - https://app.vagrantup.com/bento/boxes/ubuntu-20.04 - as the image template for all hosts. Enter a shell and type:
 
 ```sh
-$ vagrant box add bento/ubuntu-16.04 --provider virtualbox
+$ vagrant box add bento/ubuntu-20.04 --provider virtualbox
 ```
 to pull the requested image from the Vagrant Cloud catalog.
 

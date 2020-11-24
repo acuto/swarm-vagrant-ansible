@@ -15,7 +15,7 @@ Vagrant.configure("2") do |config|
   # Provision nodes
   nodes.each do |node|
     config.vm.define node[:hostname] do |nodeconfig|
-      nodeconfig.vm.box = "bento/ubuntu-16.04";
+      nodeconfig.vm.box = "bento/ubuntu-20.04";
       nodeconfig.vm.hostname = node[:hostname] + ".box"
       nodeconfig.vm.network :private_network, ip: node[:ip]
       memory = node[:ram] ? node[:ram] : 1024;
