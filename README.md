@@ -81,7 +81,7 @@ The cluster configuration is carried out by means of three Ansible playbooks. Th
       apt_key: url=https://download.docker.com/linux/ubuntu/gpg state=present
 
     - name: Add the docker apt repo
-      apt_repository: repo='deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable' state=present
+      apt_repository: repo='deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable' state=present
 
     - name: Install packages
       apt:
